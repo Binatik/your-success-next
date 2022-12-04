@@ -2,6 +2,7 @@ export const paletteDark = {
 	primary: {
 		main: '#787f85',
 		grey: '#16181a',
+		lightGrey: '#b5b5b5',
 		dark: '#000000',
 		light: '#ffffff',
 	},

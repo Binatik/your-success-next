@@ -26,6 +26,7 @@ interface ISvg {
 	propsSvg: {
 		idSvg: id
 		viewBox: string
+		className?: string
 		color?: OverridableColorUnion
 		fontSize?: OverridableSizegUnion
 	}

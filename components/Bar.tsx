@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles'
 import Link from 'next/link'
 import Svg from './Svg'
 
-export default function Page() {
+export default function Bar() {
 	return (
 		<Box
 			sx={{
@@ -21,8 +21,16 @@ export default function Page() {
 			<Container sx={{ display: 'flex' }}>
 				<StyledLink href="/">
 					<Stack alignItems="center" direction="row" spacing={0.5}>
-						<StyledTypography variant="h1">Твой</StyledTypography>
-						<StyledSvg
+						<Typography
+							className="typography_hover"
+							variant="h1"
+							color="primary.light"
+							sx={{
+								transition: 'color 0.1s',
+							}}>
+							Твой
+						</Typography>
+						<Svg
 							propsSvg={{
 								idSvg: 'logo',
 								fontSize: 'large',
@@ -32,7 +40,9 @@ export default function Page() {
 								color: 'primary.light',
 							}}
 						/>
-						<StyledTypography variant="h2">спех</StyledTypography>
+						<Typography color="secondary.main" variant="h2">
+							спех
+						</Typography>
 					</Stack>
 				</StyledLink>
 			</Container>
@@ -40,8 +50,9 @@ export default function Page() {
 	)
 }
 
-const StyledSvg = styled(Svg)(({ theme, ...props }) => ({}))
-
-const StyledTypography = styled(Typography)(({ theme, ...props }) => ({}))
-
-const StyledLink = styled(Link)(({ theme, ...props }) => ({}))
+const StyledLink = styled(Link)(({ theme, ...props }) => ({
+	textDecoration: 'none',
+	':hover .typography_hover': {
+		color: theme.palette.primary.lightGrey,
+	},
+}))

@@ -1,8 +1,9 @@
 import { SimplePaletteColorOptions } from '@mui/material/styles'
 
 declare module '@mui/material/styles' {
-	export interface SimplePaletteColorOptions {
+	export interface PaletteColor {
 		grey?: string
+		lightGrey?: string
 	}
 }
 
