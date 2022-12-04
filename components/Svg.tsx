@@ -1,8 +1,15 @@
 'use client'
 
-import { SvgIcon, SvgIconPropsColorOverrides } from '@mui/material'
+import {
+	SvgIcon,
+	SvgIconPropsColorOverrides,
+	SvgIconPropsSizeOverrides,
+	SvgIconTypeMap,
+} from '@mui/material'
 
-type OverridableStringUnion =
+type id = 'logo'
+
+type OverridableColorUnion =
 	| 'inherit'
 	| 'action'
 	| 'disabled'
@@ -13,12 +20,22 @@ type OverridableStringUnion =
 	| 'success'
 	| 'warning'
 
+type OverridableSizegUnion = 'inherit' | 'large' | 'medium' | 'small'
+
 interface ISvg {
-	id: string
-	viewBox: string
-	color: OverridableStringUnion | SvgIconPropsColorOverrides
+	propsSvg: {
+		idSvg: id
+		viewBox: string
+		color?: OverridableColorUnion
+		fontSize?: OverridableSizegUnion
+	}
+	propsSX?: {
+		color?: SvgIconPropsColorOverrides
+		fontSize?: SvgIconPropsSizeOverrides
+		opacity?: number
+	}
 }
-export default function Svg({ id, ...props }: ISvg) {
+export default function Svg({ propsSvg, propsSX }: ISvg) {
 	function render() {
 		const logo = (
 			<>
@@ -53,13 +70,17 @@ export default function Svg({ id, ...props }: ISvg) {
 			</>
 		)
 
-		switch (id) {
+		switch (propsSvg.idSvg) {
 			case 'logo':
 				return logo
 			default:
-				return <svg></svg>
+				const _: never = propsSvg.idSvg
 		}
 	}
 
-	return <SvgIcon>{render()}</SvgIcon>
+	return (
+		<SvgIcon {...propsSvg} sx={{ ...propsSX }}>
+			{render()}
+		</SvgIcon>
+	)
 }

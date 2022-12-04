@@ -1,6 +1,7 @@
 # build output
 dist
 .next
+.vscode
 target
 packages/next/wasm/@next
 
