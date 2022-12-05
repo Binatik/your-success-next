@@ -4,8 +4,8 @@ import {
 	SvgIcon,
 	SvgIconPropsColorOverrides,
 	SvgIconPropsSizeOverrides,
-	SvgIconTypeMap,
 } from '@mui/material'
+import { HTMLAttributes } from 'react'
 
 type id = 'logo'
 
@@ -22,11 +22,10 @@ type OverridableColorUnion =
 
 type OverridableSizegUnion = 'inherit' | 'large' | 'medium' | 'small'
 
-interface ISvg {
+interface ISvgProps extends HTMLAttributes<HTMLDivElement> {
 	propsSvg: {
-		idSvg: id
+		id: id
 		viewBox: string
-		className?: string
 		color?: OverridableColorUnion
 		fontSize?: OverridableSizegUnion
 	}
@@ -36,7 +35,7 @@ interface ISvg {
 		opacity?: number
 	}
 }
-export default function Svg({ propsSvg, propsSX }: ISvg) {
+export default function Svg({ propsSvg, propsSX }: ISvgProps) {
 	function render() {
 		const logo = (
 			<>
@@ -71,11 +70,11 @@ export default function Svg({ propsSvg, propsSX }: ISvg) {
 			</>
 		)
 
-		switch (propsSvg.idSvg) {
+		switch (propsSvg.id) {
 			case 'logo':
 				return logo
 			default:
-				const _: never = propsSvg.idSvg
+				const _: never = propsSvg.id
 		}
 	}
 

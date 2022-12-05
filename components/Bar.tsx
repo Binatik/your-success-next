@@ -32,7 +32,7 @@ export default function Bar() {
 						</Typography>
 						<Svg
 							propsSvg={{
-								idSvg: 'logo',
+								id: 'logo',
 								fontSize: 'large',
 								viewBox: '0 0 30 30',
 							}}

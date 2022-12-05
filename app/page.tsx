@@ -17,7 +17,7 @@ export default function Page() {
 				}}>
 				<Svg
 					propsSvg={{
-						idSvg: 'logo',
+						id: 'logo',
 						viewBox: '0 0 35 35',
 					}}
 					propsSX={{
