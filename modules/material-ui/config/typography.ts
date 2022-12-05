@@ -1,11 +1,11 @@
+'use client'
+
 import { Inter } from '@next/font/google'
 
 const ThinInter = Inter({ weight: '100' })
 const LightInter = Inter({ weight: '300' })
 const RegularInter = Inter({ weight: '400' })
 const BoldInter = Inter({ weight: '800' })
-
-console.log(ThinInter)
 
 export const typography = {
 	fontFamily: RegularInter.style.fontFamily,

@@ -9,9 +9,9 @@ import '../styles/global.css'
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	const [theme, setTheme] = React.useState(darkTheme)
 
-	// useEffect(() => {
-	// 	setTheme(darkTheme)
-	// }, [setTheme])
+	useEffect(() => {
+		setTheme(darkTheme)
+	}, [setTheme])
 	return (
 		<html lang="ru">
 			<head />

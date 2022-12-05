@@ -1,7 +1,7 @@
 'use client'
 
 import { Box } from '@mui/material'
-import Svg from '../components/Svg'
+import SvgPath from '../components/SvgPath'
 
 export default function Page() {
 	return (
@@ -15,16 +15,17 @@ export default function Page() {
 					right: 0,
 					top: '100px',
 				}}>
-				<Svg
+				<SvgPath
 					propsSvg={{
-						id: 'logo',
+						idvector: 'logo',
 						viewBox: '0 0 35 35',
 					}}
 					propsSX={{
 						fontSize: '1000px',
 						color: 'secondary.main',
 						opacity: 0.2,
-					}}></Svg>
+					}}
+				/>
 			</Box>
 		</Box>
 	)
