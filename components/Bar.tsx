@@ -1,12 +1,25 @@
 'use client'
 
-import { Container, Box, Typography, Stack, Link as MuiLink } from '@mui/material'
+import {
+	Container,
+	Box,
+	Typography,
+	IconButton,
+	Stack,
+	Link as MuiLink,
+} from '@mui/material'
 import { styled } from '@mui/material/styles'
-import { AlternateEmail, Telegram, GitHub } from '@mui/icons-material'
+import { AlternateEmail, Telegram, GitHub, DarkMode } from '@mui/icons-material'
 import Link from 'next/link'
 import SvgPath from './SvgPath'
 
-export default function Bar() {
+export default function Bar({
+	isChangeTheme,
+	setIsChangeTheme,
+}: {
+	setIsChangeTheme: any
+	isChangeTheme: any
+}) {
 	return (
 		<Box
 			sx={{
@@ -28,7 +41,6 @@ export default function Bar() {
 					<StyledLink href="/">
 						<Stack alignItems="center" direction="row" spacing={0.5}>
 							<Typography
-								className="typography_hover"
 								variant="h1"
 								color="primary.light"
 								sx={{
@@ -55,7 +67,7 @@ export default function Bar() {
 						<Stack spacing={1} direction="row">
 							<StyledMuiLink href="#">
 								<AlternateEmail
-									className="social_hover"
+									className="social"
 									sx={{
 										transition: 'color 0.2s',
 										color: 'primary.light',
@@ -64,7 +76,7 @@ export default function Bar() {
 							</StyledMuiLink>
 							<StyledMuiLink href="#">
 								<Telegram
-									className="social_hover"
+									className="social"
 									sx={{
 										transition: 'color 0.2s',
 										color: 'primary.light',
@@ -75,13 +87,18 @@ export default function Bar() {
 								href="https://github.com/Binatik"
 								target="_blank">
 								<GitHub
-									className="social_hover"
+									className="social"
 									sx={{
 										transition: 'color 0.2s',
 										color: 'primary.light',
 									}}
 								/>
 							</StyledMuiLink>
+							<IconButton
+								onClick={() => setIsChangeTheme(!isChangeTheme)}
+								sx={{ color: 'secondary.light' }}>
+								<DarkMode />
+							</IconButton>
 						</Stack>
 					</Box>
 				</Stack>
@@ -93,7 +110,7 @@ export default function Bar() {
 const StyledLink = styled(Link)(({ theme, ...props }) => ({
 	display: 'block',
 	textDecoration: 'none',
-	':hover .typography_hover': {
+	':hover .MuiTypography-h1': {
 		color: theme.palette.primary.lightGrey,
 	},
 }))
@@ -101,7 +118,7 @@ const StyledLink = styled(Link)(({ theme, ...props }) => ({
 const StyledMuiLink = styled(MuiLink)(({ theme, ...props }) => ({
 	display: 'flex',
 	alignItems: 'center',
-	':hover .social_hover': {
+	':hover .social': {
 		color: theme.palette.primary.lightGrey,
 	},
 }))

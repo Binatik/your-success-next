@@ -1,17 +1,20 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, CssBaseline, ThemeProvider } from '@mui/material'
 import { darkTheme, lightTheme } from '../modules/material-ui/theme'
 import Bar from '../components/Bar'
 import '../styles/global.css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-	const [theme, setTheme] = React.useState(darkTheme)
+	const [isChangeTheme, setIsChangeTheme] = useState(true)
+	const [theme, setTheme] = useState(darkTheme)
 
 	useEffect(() => {
-		setTheme(darkTheme)
-	}, [setTheme])
+		const defaultTheme = isChangeTheme ? darkTheme : lightTheme
+		console.log(defaultTheme)
+		setTheme(defaultTheme)
+	}, [isChangeTheme, setIsChangeTheme])
 	return (
 		<html lang="ru">
 			<head />
@@ -26,7 +29,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 							minHeight: '10000px',
 						}}>
 						<header>
-							<Bar />
+							<Bar
+								isChangeTheme={isChangeTheme}
+								setIsChangeTheme={setIsChangeTheme}
+							/>
 						</header>
 						<main className="main">{children}</main>
 						<footer>Подвал</footer>
